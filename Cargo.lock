@@ -208,10 +208,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "dework-backend-rust"
+name = "dework"
 version = "0.1.0"
 dependencies = [
  "rocket",
+ "serde",
 ]
 
 [[package]]
@@ -578,9 +579,9 @@ checksum = "ef703b7cb59335eae2eb93ceb664c0eb7ea6bf567079d843e09420219668e072"
 
 [[package]]
 name = "serde"
-version = "1.0.133"
+version = "1.0.135"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97565067517b60e2d1ea8b268e59ce036de907ac523ad83a0475da04e818989a"
+checksum = "2cf9235533494ea2ddcdb794665461814781c53f19d87b76e571a1c35acbad2b"
 
 [[package]]
 name = "sha2"
