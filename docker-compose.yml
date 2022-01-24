@@ -12,7 +12,7 @@ services:
       - postgres
       - redis
     environment:
-      - PG_URL=postgres://postgres:docker@postgres:5432/library?sslmode=disable
+      - PG_URL=postgres://postgres:docker@postgres:5432/dework?sslmode=disable
       - PG_POOL_SIZE=10
       - REDIS_URL=redis://redis
 
@@ -43,7 +43,7 @@ services:
       context: .
       dockerfile: Dockerfile.dbmate
     environment:
-      DATABASE_URL: "postgres://postgres:docker@postgres:5432/library?sslmode=disable"
+      DATABASE_URL: "postgres://postgres:docker@postgres:5432/dework?sslmode=disable"
     depends_on:
       - postgres
     links:
