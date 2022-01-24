@@ -1,0 +1,68 @@
+version: "3.4"
+services:
+  backend:
+    container_name: "dework"
+    command: cargo watch -x 'run --bin dework'
+    build:
+      dockerfile: Dockerfile
+      context: .
+      cache_from:
+        - rust:1.58.0
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - PG_URL=postgres://postgres:docker@postgres:5432/library?sslmode=disable
+      - PG_POOL_SIZE=10
+      - REDIS_URL=redis://redis
+
+    networks:
+      - dework
+    tty: true
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    ports:
+      - "8000:8000"
+
+  postgres:
+    container_name: "dework-postgres"
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: "docker"
+    networks:
+      - dework
+    ports:
+      - "5433:5432"
+
+  dbmate:
+    container_name: dework-dbmate
+    command: sh /app/create_db.sh
+    build:
+      context: .
+      dockerfile: Dockerfile.dbmate
+    environment:
+      DATABASE_URL: "postgres://postgres:docker@postgres:5432/library?sslmode=disable"
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    networks:
+      - dework
+    volumes:
+      - ./db:/app/db
+
+  redis:
+    image: redis:latest
+    container_name: dework-redis
+    expose:
+      - 6379
+    networks:
+      - dework
+    ports:
+      - "6379:6379"
+
+networks:
+  dework:
+    driver: bridge
