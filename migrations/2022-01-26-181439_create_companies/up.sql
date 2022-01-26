@@ -1,4 +1,4 @@
--- migrate:up
+-- Your SQL goes here
 CREATE TABLE public.companies (
     id integer GENERATED ALWAYS AS IDENTITY,
     name varchar NOT NULL,
@@ -8,7 +8,3 @@ CREATE TABLE public.companies (
     created_at timestamp without time zone NOT NULL DEFAULT (now()),
     PRIMARY KEY (id)
 );
-
--- migrate:down
-DROP TABLE IF EXISTS companies
-

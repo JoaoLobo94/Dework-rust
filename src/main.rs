@@ -2,11 +2,10 @@
 
 #[get("/")]
 fn index() -> &'static str {
-    "Hello, world!"
+    "Hello, woasdfghjkrld!"
 }
 
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount("/", routes![index])
-    let v = Vec::new();  
 }

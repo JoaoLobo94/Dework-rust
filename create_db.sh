@@ -1,9 +1,9 @@
 #!/bin/sh
 
-dbmate wait
+cargo watch -x 'run --bin dework'
 
-dbmate up
+diesel setup
 
-echo "Done"
+diesel migration run
 
-exec "$@"
+echo "All tables migrated"
