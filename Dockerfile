@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM amd64/rust:latest
 
 WORKDIR /app
 
