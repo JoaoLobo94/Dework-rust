@@ -3,7 +3,6 @@
 #![allow(unused)]
 #![allow(clippy::all)]
 
-
 use chrono::NaiveDateTime;
 #[derive(Queryable, Debug)]
 pub struct Company {
@@ -38,12 +37,13 @@ pub struct Story {
     pub company_id: i32,
     pub created_at: NaiveDateTime,
 }
-
-#[derive(Queryable, Debug)]
-pub struct UserCompany {
-    pub id: i32,
-    pub company_id: i32,
-    pub user_id: i32,
+pub mod user {
+    #[derive(Queryable, Debug)]
+    pub struct UserCompany {
+        pub id: i32,
+        pub company_id: i32,
+        pub user_id: i32,
+    }
 }
 
 #[derive(Queryable, Debug)]
@@ -63,4 +63,3 @@ pub struct User {
     pub job: String,
     pub created_at: NaiveDateTime,
 }
-
