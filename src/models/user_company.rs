@@ -1,4 +1,4 @@
-pub mod user {
+pub mod UserCompany {
 	#[derive(Queryable, Debug)]
 	pub struct UserCompany {
 	    pub id: i32,

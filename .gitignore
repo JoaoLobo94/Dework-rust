@@ -2,3 +2,6 @@
 .vscode
 /target
 .gdb_history
+Cargo.lock
+.env
+.idea
